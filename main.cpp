@@ -165,10 +165,8 @@ struct IntType
             std::cout << "returning lhs" << std::endl;
             return lhs;
         }
-        else 
-        {
-            return lhs / rhs;
-        }
+        
+        return lhs / rhs;
     }
 };
 
