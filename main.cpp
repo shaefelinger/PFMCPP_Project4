@@ -229,9 +229,36 @@ struct FloatType
         *value /= rhs;
         return *this;
     }
+
+    FloatType& add(FloatType ft);
+    FloatType& subtract(FloatType ft);
+    FloatType& multiply(FloatType ft);
+    FloatType& divide(FloatType ft);
+
+
 };
 
+FloatType& FloatType::add(FloatType ft)
+{
+    return add(*ft.value);
+}
 
+FloatType& FloatType::subtract(FloatType ft)
+{
+    return subtract(*ft.value);
+}
+
+FloatType& FloatType::multiply(FloatType ft)
+{
+    return multiply(*ft.value);
+}
+
+FloatType& FloatType::divide(FloatType ft)
+{
+    return divide(*ft.value);
+}
+
+// ==============================================
 
 struct DoubleType
 {
@@ -386,4 +413,16 @@ int main ()
     std::cout << "IntType divide result=" << *it.divide(3).value << std::endl << std::endl;
     std::cout << "Chain calculation = " << *(it.multiply(1000).divide(2).subtract(10).add(100)).value << std::endl;
 
+    // FloatType object instanciation and method tests
+    // --------
+    std::cout << "New value of ft = (ft + 3.0f) * 1.5f / 5.0f = " << *ft.add( 3.0f ).multiply(1.5f).divide(5.0f).value << std::endl;
+       
+    std::cout << "---------------------\n" << std::endl; 
+
+/*
+*ft.value = 2.0f;
+FloatType testFloat = 3.5f;
+
+std::cout << "Test add result=" << *ft.add(testFloat).value << std::endl;
+*/
 }
