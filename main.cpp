@@ -226,7 +226,7 @@ struct FloatType
         if(rhs == 0.0f)
         {
             std::cout << std::endl;
-            std::cout << "warning, floating point division by zero returns 'inf' !" << std::endl;
+            std::cout << "warning, floating point division by zero!" << std::endl;
         }
 
         *value /= rhs;
@@ -288,7 +288,7 @@ struct DoubleType
         if(rhs == 0.0)
         {
             std::cout << std::endl;
-            std::cout << "warning, floating point division by zero returns 'inf' !" << std::endl;
+            std::cout << "warning, floating point division by zero!" << std::endl;
         }
         *value /= rhs;
         return *this;
@@ -641,8 +641,18 @@ int main ()
 
     std::cout << "---------------------\n" << std::endl; 
 
-  // std::cout << "test = " << *dt.multiply(it).value << std::endl;
-  // std::cout << "= " << *(dt.multiply(it).divide(5.0f).add(ft).value) << std::endl;
+    // Intercept division by 0
+    // --------
+    std::cout << "Intercept division by 0 " << std::endl;
+    std::cout << "New value of it = it / 0 = " << *it.divide(0).value << std::endl;
+    std::cout << "New value of ft = ft / 0 = " << *ft.divide(0).value << std::endl;
+    std::cout << "New value of dt = dt / 0 = " << *dt.divide(0).value << std::endl;
+
+    std::cout << "---------------------\n" << std::endl; 
+
+    std::cout << "good to go!\n";
+
+    return 0; 
     
 
 /*
