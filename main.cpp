@@ -610,12 +610,4 @@ int main ()
     std::cout << "good to go!\n";
 
     return 0; 
-    
-
-/*
-*ft.value = 2.0f;
-FloatType testFloat = 3.5f;
-
-
-*/
 }
