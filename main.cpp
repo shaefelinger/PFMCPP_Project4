@@ -191,56 +191,59 @@ struct FloatType
 {
     float* value;
 
-    FloatType(float heapFloat) : value(new float(heapFloat)) { 
-        std::cout << "ctor float " << *value << std::endl;
-    }
+    FloatType(float heapFloat) : value(new float(heapFloat)) { }
 
     ~FloatType()
     {
         delete value;
         value = nullptr;
-        std::cout << "dtor float" << std::endl;
     }
     
 
-    float add( float lhs, float rhs )
+    FloatType& add( float rhs )
     {
-        return lhs + rhs;
+        *value += rhs;
+        return *this;
     }
-    float subtract( float lhs, float rhs )
+
+    FloatType& subtract( float rhs )
     {
-        return lhs - rhs;
+        *value -= rhs;
+        return *this;
     }
-    float multiply( float lhs, float rhs )
+
+    FloatType& multiply( float rhs )
     {
-        return lhs * rhs;
+        *value *= rhs;
+        return *this;
     }
-    float divide( float lhs, float rhs )
+
+    FloatType& divide( float rhs )
     {
         if(rhs == 0.0f)
         {
             std::cout << std::endl;
             std::cout << "warning, floating point division by zero returns 'inf' !" << std::endl;
         }
-        return lhs / rhs;
+
+        *value /= rhs;
+        return *this;
     }
 };
+
+
 
 struct DoubleType
 {
     double* value;
 
     
-    DoubleType(double heapDouble) : value(new double(heapDouble)) 
-    { 
-        std::cout << "ctor double " << *value << std::endl;
-    }
+    DoubleType(double heapDouble) : value(new double(heapDouble)) { }
 
     ~DoubleType()
     {
         delete value;
         value = nullptr;
-        std::cout << "dtor double " << std::endl;
     }
     
 
@@ -272,15 +275,12 @@ struct IntType
     int* value;
 
     
-    IntType(int heapInt) : value(new int(heapInt)) {
-        std::cout << "ctor int " << *value << std::endl;
-    }
+    IntType(int heapInt) : value(new int(heapInt)) { }
 
     ~IntType()
     {
         delete value;
         value = nullptr;
-        std::cout << "ctor int " << std::endl;
     }
     
 
@@ -357,9 +357,12 @@ int main ()
     HeapA heapA; 
 
     //assign heap primitives
-    FloatType ft ( 2.122130f );
-    DoubleType dt ( 22.2342347 );
+    FloatType ft ( 2.0f );
+    DoubleType dt ( 2 );
     IntType it ( 2 ) ;
 
+    std::cout << "FloatType add result=" << *ft.add(2.234f).subtract(2.234f).divide(2).multiply(10).value << std::endl;
     
+    // std::cout << "FloatType add result=" << ft.add(2.234f).mulitply(10) << std::endl;
+    // std::cout << "FloatType add result=" << ft.add( 2.0f ).value << std::endl;
 }
