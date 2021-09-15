@@ -109,6 +109,7 @@ good to go!
 */
 
 /*
+
 #include <iostream>
 
 int main()
@@ -120,6 +121,7 @@ int main()
     FloatType ft ( 2.0f );
     DoubleType dt ( 2 );
     IntType it ( 2 ) ;
+
 
     std::cout << "FloatType add result=" << ft.add( 2.0f ).value << std::endl;
     std::cout << "FloatType subtract result=" << ft.subtract( 2.0f ).value << std::endl;
@@ -187,6 +189,20 @@ int main()
 
 struct FloatType
 {
+    float* value;
+
+    FloatType(float heapFloat) : value(new float(heapFloat)) { 
+        std::cout << "ctor float " << *value << std::endl;
+    }
+
+    ~FloatType()
+    {
+        delete value;
+        value = nullptr;
+        std::cout << "dtor float" << std::endl;
+    }
+    
+
     float add( float lhs, float rhs )
     {
         return lhs + rhs;
@@ -212,6 +228,22 @@ struct FloatType
 
 struct DoubleType
 {
+    double* value;
+
+    
+    DoubleType(double heapDouble) : value(new double(heapDouble)) 
+    { 
+        std::cout << "ctor double " << *value << std::endl;
+    }
+
+    ~DoubleType()
+    {
+        delete value;
+        value = nullptr;
+        std::cout << "dtor double " << std::endl;
+    }
+    
+
     double add( double lhs, double rhs )
     {
         return lhs + rhs;
@@ -237,6 +269,21 @@ struct DoubleType
 
 struct IntType
 {
+    int* value;
+
+    
+    IntType(int heapInt) : value(new int(heapInt)) {
+        std::cout << "ctor int " << *value << std::endl;
+    }
+
+    ~IntType()
+    {
+        delete value;
+        value = nullptr;
+        std::cout << "ctor int " << std::endl;
+    }
+    
+
     int add( int lhs, int rhs )
     {
         return lhs + rhs;
@@ -261,6 +308,8 @@ struct IntType
         return lhs / rhs;
     }
 };
+
+/*
 
 int main() 
 {
@@ -300,4 +349,17 @@ int main()
     std::cout << "good to go!" << std::endl;
 }
 
+*/
+#include <iostream>
+int main ()
+{
+     //testing instruction 0
+    HeapA heapA; 
 
+    //assign heap primitives
+    FloatType ft ( 2.122130f );
+    DoubleType dt ( 22.2342347 );
+    IntType it ( 2 ) ;
+
+    
+}
