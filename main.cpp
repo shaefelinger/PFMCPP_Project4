@@ -20,14 +20,14 @@ struct A {};
 struct HeapA
 {
     A* pointerToA;
-    HeapA() : pointerToA(new A) {};
+    HeapA() : pointerToA(new A) {}
   
     ~HeapA()
     {
         delete(pointerToA);
         pointerToA = nullptr;
     }
-}
+};
 
 
  /*
@@ -106,10 +106,9 @@ good to go!
 
 
 
-
-
 */
 
+/*
 #include <iostream>
 
 int main()
@@ -168,7 +167,7 @@ int main()
     return 0;
 }
 
-
+*/
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
