@@ -186,6 +186,9 @@ int main()
  */
 
 #include <iostream>
+struct FloatType;
+struct DoubleType;
+struct IntType;
 
 struct FloatType
 {
@@ -230,33 +233,22 @@ struct FloatType
         return *this;
     }
 
-    FloatType& add(FloatType ft);
-    FloatType& subtract(FloatType ft);
-    FloatType& multiply(FloatType ft);
-    FloatType& divide(FloatType ft);
+    FloatType& add(FloatType& ft);
+    FloatType& subtract(FloatType& ft);
+    FloatType& multiply(FloatType& ft);
+    FloatType& divide(FloatType& ft);
 
+    FloatType& add(DoubleType& dt);
+    FloatType& subtract(DoubleType& dt);
+    FloatType& multiply(DoubleType& dt);
+    FloatType& divide(DoubleType& dt);
 
+    FloatType& add(IntType& dt);
+    FloatType& subtract(IntType& dt);
+    FloatType& multiply(IntType& dt);
+    FloatType& divide(IntType& dt);
 };
 
-FloatType& FloatType::add(FloatType ft)
-{
-    return add(*ft.value);
-}
-
-FloatType& FloatType::subtract(FloatType ft)
-{
-    return subtract(*ft.value);
-}
-
-FloatType& FloatType::multiply(FloatType ft)
-{
-    return multiply(*ft.value);
-}
-
-FloatType& FloatType::divide(FloatType ft)
-{
-    return divide(*ft.value);
-}
 
 // ==============================================
 
@@ -344,6 +336,70 @@ struct IntType
         return *this;
     }
 };
+
+
+// FloatType & FloatType
+FloatType& FloatType::add(FloatType& ft)
+{
+    return add(*ft.value);
+}
+
+FloatType& FloatType::subtract(FloatType& ft)
+{
+    return subtract(*ft.value);
+}
+
+FloatType& FloatType::multiply(FloatType& ft)
+{
+    return multiply(*ft.value);
+}
+
+FloatType& FloatType::divide(FloatType& ft)
+{
+    return divide(*ft.value);
+}
+// FloatType & DoubleType
+FloatType& FloatType::add(DoubleType& dt)
+{
+    return add(*dt.value);
+}
+
+FloatType& FloatType::subtract(DoubleType& dt)
+{
+    return subtract(*dt.value);
+}
+
+FloatType& FloatType::multiply(DoubleType& dt)
+{
+    return multiply(*dt.value);
+}
+
+FloatType& FloatType::divide(DoubleType& dt)
+{
+    return divide(*dt.value);
+}
+
+// FloatType & IntType
+FloatType& FloatType::add(IntType& it)
+{
+    return add(*it.value);
+}
+
+FloatType& FloatType::subtract(IntType& it)
+{
+    return subtract(*it.value);
+}
+
+FloatType& FloatType::multiply(IntType& it)
+{
+    return multiply(*it.value);
+}
+
+FloatType& FloatType::divide(IntType& it)
+{
+    return divide(*it.value);
+}
+
 
 /*
 
